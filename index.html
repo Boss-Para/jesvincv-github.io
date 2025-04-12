@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jesvin Saji - Cybersecurity Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#00F0FF',secondary:'#FF0066'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+:root {
+--dark-bg: #0A0A0A;
+--dark-surface: #121212;
+--neon-blue: #00F0FF;
+--neon-pink: #FF0066;
+--text-primary: #E0E0E0;
+--text-secondary: #A0A0A0;
+}
+body {
+background-color: var(--dark-bg);
+color: var(--text-primary);
+font-family: 'Space Mono', monospace;
+overflow-x: hidden;
+}
+.orbitron {
+font-family: 'Orbitron', sans-serif;
+}
+.custom-cursor {
+position: fixed;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background-color: transparent;
+border: 2px solid var(--neon-blue);
+transform: translate(-50%, -50%);
+pointer-events: none;
+z-index: 9999;
+mix-blend-mode: difference;
+transition: width 0.3s, height 0.3s, background-color 0.3s;
+}
+.cursor-trail {
+position: fixed;
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background-color: var(--neon-blue);
+pointer-events: none;
+z-index: 9998;
+opacity: 0.7;
+transition: opacity 0.5s;
+}
+.glitch {
+position: relative;
+animation: glitch 1s linear infinite;
+}
+@keyframes glitch {
+2%, 64% {
+transform: translate(2px, 0) skew(0deg);
+}
+4%, 60% {
+transform: translate(-2px, 0) skew(0deg);
+}
+62% {
+transform: translate(0, 0) skew(5deg);
+}
+}
+.glitch:before,
+.glitch:after {
+content: attr(data-text);
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+.glitch:before {
+left: 2px;
+text-shadow: -2px 0 var(--neon-pink);
+clip: rect(44px, 450px, 56px, 0);
+animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.glitch:after {
+left: -2px;
+text-shadow: -2px 0 var(--neon-blue);
+clip: rect(44px, 450px, 56px, 0);
+animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim {
+0% {
+clip: rect(31px, 9999px, 94px, 0);
+}
+5% {
+clip: rect(70px, 9999px, 71px, 0);
+}
+10% {
+clip: rect(29px, 9999px, 83px, 0);
+}
+15% {
+clip: rect(75px, 9999px, 91px, 0);
+}
+20% {
+clip: rect(82px, 9999px, 29px, 0);
+}
+25% {
+clip: rect(33px, 9999px, 40px, 0);
+}
+30% {
+clip: rect(67px, 9999px, 70px, 0);
+}
+35% {
+clip: rect(53px, 9999px, 5px, 0);
+}
+40% {
+clip: rect(31px, 9999px, 88px, 0);
+}
+45% {
+clip: rect(56px, 9999px, 34px, 0);
+}
+50% {
+clip: rect(7px, 9999px, 89px, 0);
+}
+55% {
+clip: rect(33px, 9999px, 61px, 0);
+}
+60% {
+clip: rect(64px, 9999px, 34px, 0);
+}
+65% {
+clip: rect(75px, 9999px, 6px, 0);
+}
+70% {
+clip: rect(57px, 9999px, 65px, 0);
+}
+75% {
+clip: rect(20px, 9999px, 35px, 0);
+}
+80% {
+clip: rect(15px, 9999px, 72px, 0);
+}
+85% {
+clip: rect(93px, 9999px, 37px, 0);
+}
+90% {
+clip: rect(43px, 9999px, 6px, 0);
+}
+95% {
+clip: rect(34px, 9999px, 93px, 0);
+}
+100% {
+clip: rect(82px, 9999px, 13px, 0);
+}
+}
+@keyframes glitch-anim2 {
+0% {
+clip: rect(65px, 9999px, 91px, 0);
+}
+5% {
+clip: rect(93px, 9999px, 68px, 0);
+}
+10% {
+clip: rect(21px, 9999px, 73px, 0);
+}
+15% {
+clip: rect(23px, 9999px, 19px, 0);
+}
+20% {
+clip: rect(38px, 9999px, 40px, 0);
+}
+25% {
+clip: rect(11px, 9999px, 15px, 0);
+}
+30% {
+clip: rect(51px, 9999px, 62px, 0);
+}
+35% {
+clip: rect(89px, 9999px, 100px, 0);
+}
+40% {
+clip: rect(84px, 9999px, 34px, 0);
+}
+45% {
+clip: rect(64px, 9999px, 94px, 0);
+}
+50% {
+clip: rect(53px, 9999px, 9px, 0);
+}
+55% {
+clip: rect(76px, 9999px, 59px, 0);
+}
+60% {
+clip: rect(23px, 9999px, 68px, 0);
+}
+65% {
+clip: rect(78px, 9999px, 72px, 0);
+}
+70% {
+clip: rect(60px, 9999px, 33px, 0);
+}
+75% {
+clip: rect(85px, 9999px, 92px, 0);
+}
+80% {
+clip: rect(26px, 9999px, 52px, 0);
+}
+85% {
+clip: rect(67px, 9999px, 96px, 0);
+}
+90% {
+clip: rect(36px, 9999px, 63px, 0);
+}
+95% {
+clip: rect(87px, 9999px, 46px, 0);
+}
+100% {
+clip: rect(10px, 9999px, 90px, 0);
+}
+}
+.loading-bar {
+height: 4px;
+background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+width: 0%;
+position: relative;
+animation: loading 3s forwards;
+}
+@keyframes loading {
+0% { width: 0%; }
+100% { width: 100%; }
+}
+.terminal-text {
+overflow: hidden;
+border-right: 2px solid var(--neon-blue);
+white-space: nowrap;
+margin: 0 auto;
+animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+from { width: 0 }
+to { width: 100% }
+}
+@keyframes blink-caret {
+from, to { border-color: transparent }
+50% { border-color: var(--neon-blue) }
+}
+.grid-bg {
+background-image:
+linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+background-size: 20px 20px;
+background-position: center center;
+}
+.hexagon {
+clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+transition: all 0.3s ease;
+}
+.hexagon:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 20px rgba(0, 240, 255, 0.3);
+}
+.timeline-node {
+position: relative;
+}
+.timeline-node::before {
+content: '';
+position: absolute;
+width: 2px;
+background-color: var(--neon-blue);
+top: 0;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+}
+.timeline-item {
+position: relative;
+margin-bottom: 50px;
+}
+.timeline-item::after {
+content: '';
+position: absolute;
+width: 16px;
+height: 16px;
+background-color: var(--dark-bg);
+border: 2px solid var(--neon-blue);
+border-radius: 50%;
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+z-index: 1;
+box-shadow: 0 0 10px var(--neon-blue);
+}
+.flip-card {
+perspective: 1000px;
+height: 300px;
+}
+.flip-card-inner {
+position: relative;
+width: 100%;
+height: 100%;
+transition: transform 0.8s;
+transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+position: absolute;
+width: 100%;
+height: 100%;
+backface-visibility: hidden;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+border-radius: 8px;
+}
+.flip-card-front {
+background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+border: 1px solid rgba(0, 240, 255, 0.3);
+}
+.flip-card-back {
+background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+transform: rotateY(180deg);
+border: 1px solid rgba(255, 0, 102, 0.3);
+}
+.badge {
+position: relative;
+overflow: hidden;
+transition: all 0.3s ease;
+}
+.badge::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: conic-gradient(transparent, var(--neon-blue), transparent 30%);
+animation: rotate 4s linear infinite;
+}
+.badge::after {
+content: '';
+position: absolute;
+inset: 3px;
+background: var(--dark-surface);
+border-radius: 7px;
+z-index: 1;
+}
+.badge-content {
+position: relative;
+z-index: 2;
+padding: 1rem;
+}
+@keyframes rotate {
+100% {
+transform: rotate(1turn);
+}
+}
+.form-input {
+background-color: rgba(18, 18, 18, 0.8);
+border: 1px solid rgba(0, 240, 255, 0.3);
+color: var(--text-primary);
+transition: all 0.3s ease;
+}
+.form-input:focus {
+border-color: var(--neon-blue);
+box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+outline: none;
+}
+.social-icon {
+transition: all 0.3s ease;
+}
+.social-icon:hover {
+transform: translateY(-5px);
+color: var(--neon-blue);
+}
+.circuit-bg {
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M10 10h80v80H10z' fill='none' stroke='%2300F0FF' stroke-width='0.5' opacity='0.1'/%3E%3Cpath d='M30 10v30h40V10M30 90V60h40v30M10 30h30v40H10M90 30H60v40h30' fill='none' stroke='%2300F0FF' stroke-width='0.5' opacity='0.1'/%3E%3Ccircle cx='30' cy='30' r='2' fill='%2300F0FF' opacity='0.2'/%3E%3Ccircle cx='70' cy='30' r='2' fill='%2300F0FF' opacity='0.2'/%3E%3Ccircle cx='30' cy='70' r='2' fill='%2300F0FF' opacity='0.2'/%3E%3Ccircle cx='70' cy='70' r='2' fill='%2300F0FF' opacity='0.2'/%3E%3C/svg%3E");
+}
+#canvas-container {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+}
+input[type="checkbox"] {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+background-color: rgba(10, 10, 10, 0.8);
+border: 1px solid rgba(0, 240, 255, 0.3);
+border-radius: 4px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+margin-right: 8px;
+}
+input[type="checkbox"]:checked {
+background-color: rgba(0, 240, 255, 0.2);
+border-color: var(--neon-blue);
+}
+input[type="checkbox"]:checked::before {
+content: '✓';
+color: var(--neon-blue);
+font-size: 14px;
+}
+.custom-range {
+-webkit-appearance: none;
+width: 100%;
+height: 4px;
+background: rgba(0, 240, 255, 0.2);
+border-radius: 2px;
+outline: none;
+}
+.custom-range::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 16px;
+height: 16px;
+background: var(--neon-blue);
+border-radius: 50%;
+cursor: pointer;
+box-shadow: 0 0 10px var(--neon-blue);
+}
+.custom-range::-moz-range-thumb {
+width: 16px;
+height: 16px;
+background: var(--neon-blue);
+border-radius: 50%;
+cursor: pointer;
+box-shadow: 0 0 10px var(--neon-blue);
+border: none;
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(10, 10, 10, 0.8);
+border: 1px solid rgba(0, 240, 255, 0.3);
+transition: .4s;
+border-radius: 24px;
+}
+.switch-slider:before {
+position: absolute;
+content: "";
+height: 16px;
+width: 16px;
+left: 4px;
+bottom: 3px;
+background-color: var(--text-primary);
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .switch-slider {
+background-color: rgba(0, 240, 255, 0.2);
+border-color: var(--neon-blue);
+}
+input:checked + .switch-slider:before {
+transform: translateX(26px);
+background-color: var(--neon-blue);
+box-shadow: 0 0 10px var(--neon-blue);
+}
+.progress-bar {
+height: 6px;
+background: rgba(160, 160, 160, 0.2);
+border-radius: 3px;
+overflow: hidden;
+}
+.progress-fill {
+height: 100%;
+background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+border-radius: 3px;
+transition: width 1s ease-in-out;
+}
+.tab-button {
+background-color: transparent;
+color: var(--text-secondary);
+border: 1px solid rgba(0, 240, 255, 0.3);
+transition: all 0.3s ease;
+}
+.tab-button.active {
+background-color: rgba(0, 240, 255, 0.1);
+color: var(--neon-blue);
+border-color: var(--neon-blue);
+box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+#loading-screen {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: var(--dark-bg);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+transition: opacity 0.5s ease;
+}
+#cube-container {
+width: 100px;
+height: 100px;
+perspective: 800px;
+margin-bottom: 2rem;
+}
+#cube {
+width: 100%;
+height: 100%;
+position: relative;
+transform-style: preserve-3d;
+animation: rotate 10s infinite linear;
+}
+.cube-face {
+position: absolute;
+width: 100px;
+height: 100px;
+border: 1px solid var(--neon-blue);
+background-color: rgba(0, 240, 255, 0.05);
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Orbitron', sans-serif;
+color: var(--neon-blue);
+text-shadow: 0 0 5px var(--neon-blue);
+box-shadow: 0 0 10px rgba(0, 240, 255, 0.3) inset;
+}
+.front { transform: translateZ(50px); }
+.back { transform: rotateY(180deg) translateZ(50px); }
+.right { transform: rotateY(90deg) translateZ(50px); }
+.left { transform: rotateY(-90deg) translateZ(50px); }
+.top { transform: rotateX(90deg) translateZ(50px); }
+.bottom { transform: rotateX(-90deg) translateZ(50px); }
+@keyframes rotate {
+0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
+100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+.scroll-down {
+position: absolute;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+flex-direction: column;
+align-items: center;
+animation: bounce 2s infinite;
+}
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+40% { transform: translateY(-20px) translateX(-50%); }
+60% { transform: translateY(-10px) translateX(-50%); }
+}
+</style>
+</head>
+<body>
+<div id="loading-screen">
+<div id="cube-container">
+<div id="cube">
+<div class="cube-face front">SEC</div>
+<div class="cube-face back">CTF</div>
+<div class="cube-face right">HACK</div>
+<div class="cube-face left">CODE</div>
+<div class="cube-face top">CYBER</div>
+<div class="cube-face bottom">JESVIN</div>
+</div>
+</div>
+<div class="text-xl text-primary mb-4 orbitron">Initializing Security Protocols...</div>
+<div class="w-64 h-1 bg-gray-800 rounded-full overflow-hidden mb-8">
+<div class="loading-bar"></div>
+</div>
+<div class="text-sm text-gray-400 terminal-text">System access granted. Welcome to the secure zone.</div>
+</div>
+<div class="custom-cursor"></div>
+<div id="canvas-container"></div>
+<header class="min-h-screen relative flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="grid-bg absolute inset-0 opacity-20"></div>
+</div>
+<div class="container mx-auto px-4 z-10 text-center">
+<h1 class="text-6xl md:text-7xl font-bold mb-4 orbitron glitch" data-text="Jesvin Saji">Jesvin Saji</h1>
+<h2 class="text-2xl md:text-3xl mb-8 text-primary">Cybersecurity Enthusiast & Analyst</h2>
+<div class="flex flex-wrap justify-center gap-4 mb-12">
+<div class="bg-black bg-opacity-50 backdrop-blur-sm px-6 py-3 rounded-full border border-primary text-primary">
+Network Defense
+</div>
+<div class="bg-black bg-opacity-50 backdrop-blur-sm px-6 py-3 rounded-full border border-primary text-primary">
+Vulnerability Assessment
+</div>
+<div class="bg-black bg-opacity-50 backdrop-blur-sm px-6 py-3 rounded-full border border-primary text-primary">
+Ethical Hacking
+</div>
+</div>
+<div class="mt-12">
+<a href="/path-to-your-cv.pdf" download class="inline-flex items-center bg-primary bg-opacity-10 text-primary border border-primary px-8 py-3 rounded-button orbitron hover:bg-opacity-20 transition-all duration-300 mr-4 whitespace-nowrap">
+<i class="ri-download-line mr-2"></i>
+Download CV
+</a>
+<button class="bg-transparent text-white border border-white px-8 py-3 rounded-button orbitron hover:border-primary hover:text-primary transition-all duration-300 whitespace-nowrap">Contact Me</button>
+</div>
+</div>
+<div class="scroll-down text-primary">
+<span class="mb-2">Scroll Down</span>
+<i class="ri-arrow-down-line ri-xl"></i>
+</div>
+</header>
+<section id="about" class="py-20 relative overflow-hidden">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold mb-16 orbitron text-center">About <span class="text-primary">Me</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="relative">
+<div class="hexagon bg-gray-900 w-full aspect-square overflow-hidden border border-primary p-4 flex items-center justify-center">
+<div class="circuit-bg absolute inset-0 opacity-20"></div>
+<img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20a%20young%20cybersecurity%20expert%20male%20with%20glasses%2C%20serious%20expression%2C%20dark%20background%20with%20blue%20digital%20elements%2C%20professional%20headshot%2C%20high%20quality%2C%20realistic%2C%20detailed&width=600&height=600&seq=1&orientation=squarish" alt="Jesvin Saji" class="rounded-lg z-10 max-w-full max-h-full object-cover">
+</div>
+</div>
+<div class="bg-gray-900 bg-opacity-50 backdrop-blur-sm p-8 rounded-lg border border-gray-800 relative">
+<div class="grid-bg absolute inset-0 opacity-10 rounded-lg"></div>
+<div class="relative z-10">
+<div class="flex items-center mb-6">
+<div class="w-3 h-3 rounded-full bg-primary mr-3"></div>
+<div class="text-xl orbitron text-primary">$ whoami</div>
+</div>
+<p class="mb-4 text-gray-300">Passionate cybersecurity enthusiast with a focus on network security, penetration testing, and vulnerability assessment. Currently pursuing a Bachelor's degree in Computer Science with a specialization in Cybersecurity.</p>
+<p class="mb-6 text-gray-300">I am dedicated to staying at the forefront of cybersecurity trends and technologies, constantly expanding my knowledge through hands-on projects, CTF competitions, and industry certifications.</p>
+<div class="flex items-center mb-6">
+<div class="w-3 h-3 rounded-full bg-primary mr-3"></div>
+<div class="text-xl orbitron text-primary">$ interests</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center">
+<i class="ri-shield-check-line ri-lg text-primary mr-2"></i>
+<span>Network Security</span>
+</div>
+<div class="flex items-center">
+<i class="ri-bug-line ri-lg text-primary mr-2"></i>
+<span>Penetration Testing</span>
+</div>
+<div class="flex items-center">
+<i class="ri-lock-password-line ri-lg text-primary mr-2"></i>
+<span>Vulnerability Assessment</span>
+</div>
+<div class="flex items-center">
+<i class="ri-spy-line ri-lg text-primary mr-2"></i>
+<span>OSINT</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="skills" class="py-20 relative overflow-hidden bg-gray-950">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold mb-16 orbitron text-center">Technical <span class="text-primary">Skills</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="w-16 h-16 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mb-6 mx-auto">
+<i class="ri-terminal-box-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4 text-center orbitron">Technical Tools</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between mb-1">
+<span>Kali Linux</span>
+<span>95%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 95%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>Wireshark</span>
+<span>90%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 90%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>Nmap</span>
+<span>85%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>Metasploit</span>
+<span>5%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 5%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>Burp Suite</span>
+<span>5%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 5%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="w-16 h-16 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mb-6 mx-auto">
+<i class="ri-code-s-slash-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4 text-center orbitron">Programming</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between mb-1">
+<span>Python</span>
+<span>30%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 30%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>Bash Scripting</span>
+<span>85%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>SQL</span>
+<span>40%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 40%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>HTML</span>
+<span>75%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 75%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>Solidity</span>
+<span>1%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 1%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="w-16 h-16 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mb-6 mx-auto">
+<i class="ri-user-settings-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4 text-center orbitron">Soft Skills</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between mb-1">
+<span>Problem Solving</span>
+<span>95%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 95%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>Analytical Thinking</span>
+<span>90%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 90%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>Attention to Detail</span>
+<span>95%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 95%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>Communication</span>
+<span>85%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span>Teamwork</span>
+<span>80%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 80%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16">
+<h3 class="text-2xl font-bold mb-8 orbitron text-center">Areas of <span class="text-primary">Expertise</span></h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="hexagon bg-gray-900 p-6 text-center hover:bg-gray-800 transition-all duration-300 border border-gray-800">
+<div class="w-12 h-12 flex items-center justify-center mx-auto mb-4">
+<i class="ri-shield-keyhole-line ri-2x text-primary"></i>
+</div>
+<h4 class="font-bold mb-2">Network Security</h4>
+<p class="text-sm text-gray-400">Firewall configuration, IDS/IPS setup, network monitoring</p>
+</div>
+<div class="hexagon bg-gray-900 p-6 text-center hover:bg-gray-800 transition-all duration-300 border border-gray-800">
+<div class="w-12 h-12 flex items-center justify-center mx-auto mb-4">
+<i class="ri-bug-line ri-2x text-primary"></i>
+</div>
+<h4 class="font-bold mb-2">Penetration Testing</h4>
+<p class="text-sm text-gray-400">Web app testing, network scanning, vulnerability exploitation</p>
+</div>
+<div class="hexagon bg-gray-900 p-6 text-center hover:bg-gray-800 transition-all duration-300 border border-gray-800">
+<div class="w-12 h-12 flex items-center justify-center mx-auto mb-4">
+<i class="ri-search-eye-line ri-2x text-primary"></i>
+</div>
+<h4 class="font-bold mb-2">Vulnerability Assessment</h4>
+<p class="text-sm text-gray-400">Risk analysis, security audits, remediation planning</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="experience" class="py-20 relative overflow-hidden">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold mb-16 orbitron text-center">Professional <span class="text-primary">Experience</span></h2>
+<div class="timeline-node">
+<div class="timeline-item">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="md:text-right md:pr-12">
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<h3 class="text-xl font-bold mb-2 orbitron">Cybersecurity Intern</h3>
+<h4 class="text-primary mb-4">ShadowFox</h4>
+<p class="text-sm text-gray-400 mb-2">May, 2024 - May,2024</p>
+<p class="text-gray-300">Identified and mitigated 5+ vulnerabilities by analyzing 1000+ packets using Wireshark and scanning with Nmap, did directory discovery to reduce attack surface by 15%.</p>
+<div class="mt-4 flex flex-wrap gap-2 md:justify-end">
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Report</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Vulnerability Assessment</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Network Assessment</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Directory discovery</span>
+</div>
+</div>
+</div>
+<div class="md:hidden"></div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="md:text-right md:pr-12">
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<h3 class="text-xl font-bold mb-2 orbitron">Software Engineering Job simulation</h3>
+<h4 class="text-primary mb-4">Goldman Sachs</h4>
+<p class="text-sm text-gray-400 mb-2">March,2024 - March,2024</p>Simulated governance analyst role by auditing IT security policies, cracking 50+ test passwords with Hashcat, and recommending 3+ policy improvements in a formal memo. </p>
+<div class="mt-4 flex flex-wrap gap-2 md:justify-end">
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Network Monitoring</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Social Engineering</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Password cracking</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Policy</span>
+</div>
+</div>
+</div>
+<div class="md:hidden"></div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="md:text-right md:pr-12">
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<h3 class="text-xl font-bold mb-2 orbitron">Cybersecurity Analyst</h3>
+<h4 class="text-primary mb-4">MasterCard</h4>
+<p class="text-sm text-gray-400 mb-2">February,2024 - February,2024</p>
+<p class="text-gray-300">Detected phishing threats via simulated monitoring, delivered insights to enhance protocols, and led awareness training across 3 business units to boost cyber hygiene.</p>
+<div class="mt-4 flex flex-wrap gap-2 md:justify-end">
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Security Awareness</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Troubleshootin</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">System Security</span>
+</div>
+</div>
+</div>
+<div class="md:hidden"></div>
+</div>
+</div>
+</div>
+<div class="mt-20">
+<h3 class="text-2xl font-bold mb-8 orbitron text-center">Virtual <span class="text-primary">Experience</span></h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4">
+<i class="ri-shield-check-line ri-2x text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold">JPMorgan Chase Cybersecurity Virtual Experience</h4>
+<p class="text-sm text-primary">Forage</p>
+</div>
+</div>
+<p class="text-gray-300 mb-4">Completed a simulation focused on identifying security flaws in a banking application, implementing secure coding practices, and developing a comprehensive security assessment report.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Application Security</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Secure Coding</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Risk Assessment</span>
+</div>
+</div>
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4">
+<i class="ri-bug-line ri-2x text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold">ANZ Cybersecurity Virtual Internship</h4>
+<p class="text-sm text-primary">Forage</p>
+</div>
+</div>
+<p class="text-gray-300 mb-4">Participated in a virtual internship program focusing on social engineering awareness, phishing detection, and developing security training materials for employees.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Social Engineering</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Phishing Detection</span>
+<span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Security Awareness</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="education" class="py-20 relative overflow-hidden bg-gray-950">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold mb-16 orbitron text-center">Academic <span class="text-primary">Background</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front">
+<div class="w-20 h-20 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6">
+<i class="ri-graduation-cap-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-2 orbitron">Bachelor of Science</h3>
+<h4 class="text-primary mb-4">Computer Science with Cybersecurity</h4>
+<p class="text-lg">University of Technology</p>
+<p class="text-sm text-gray-400">2022 - 2026 (Expected)</p>
+</div>
+<div class="flip-card-back">
+<h3 class="text-xl font-bold mb-4 orbitron">Key Courses</h3>
+<ul class="space-y-2 text-left px-8">
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Network Security Fundamentals</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Ethical Hacking & Penetration Testing</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Cryptography & Secure Communications</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Digital Forensics</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Secure Software Development</span>
+</li>
+</ul>
+<p class="mt-4 text-sm">GPA: 3.8/4.0</p>
+</div>
+</div>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front">
+<div class="w-20 h-20 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6">
+<i class="ri-book-open-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-2 orbitron">High School Diploma</h3>
+<h4 class="text-primary mb-4">Science & Mathematics</h4>
+<p class="text-lg">International Academy</p>
+<p class="text-sm text-gray-400">2018 - 2022</p>
+</div>
+<div class="flip-card-back">
+<h3 class="text-xl font-bold mb-4 orbitron">Achievements</h3>
+<ul class="space-y-2 text-left px-8">
+<li class="flex items-start">
+<i class="ri-trophy-line text-primary mr-2 mt-1"></i>
+<span>First place in Regional Science Olympiad</span>
+</li>
+<li class="flex items-start">
+<i class="ri-trophy-line text-primary mr-2 mt-1"></i>
+<span>Captain of the Robotics Team</span>
+</li>
+<li class="flex items-start">
+<i class="ri-trophy-line text-primary mr-2 mt-1"></i>
+<span>Completed AP Computer Science with 5/5</span>
+</li>
+<li class="flex items-start">
+<i class="ri-trophy-line text-primary mr-2 mt-1"></i>
+<span>Founded the school's Coding Club</span>
+</li>
+</ul>
+<p class="mt-4 text-sm">Graduated with Honors</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-20">
+<h3 class="text-2xl font-bold mb-8 orbitron text-center">Additional <span class="text-primary">Education</span></h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mb-4 mx-auto">
+<i class="ri-server-line ri-2x text-primary"></i>
+</div>
+<h4 class="font-bold text-center mb-2">Network Security Specialization</h4>
+<p class="text-primary text-center text-sm mb-4">Coursera</p>
+<p class="text-sm text-gray-300 text-center">Completed a comprehensive 5-course specialization covering network security principles, firewall configurations, and intrusion detection systems.</p>
+</div>
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mb-4 mx-auto">
+<i class="ri-lock-line ri-2x text-primary"></i>
+</div>
+<h4 class="font-bold text-center mb-2">Ethical Hacking Bootcamp</h4>
+<p class="text-primary text-center text-sm mb-4">Udemy</p>
+<p class="text-sm text-gray-300 text-center">Intensive 12-week bootcamp covering penetration testing methodologies, vulnerability assessment, and ethical hacking techniques.</p>
+</div>
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mb-4 mx-auto">
+<i class="ri-code-box-line ri-2x text-primary"></i>
+</div>
+<h4 class="font-bold text-center mb-2">Python for Cybersecurity</h4>
+<p class="text-primary text-center text-sm mb-4">edX</p>
+<p class="text-sm text-gray-300 text-center">Advanced course on leveraging Python for security automation, tool development, and exploit creation in cybersecurity applications.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="publications" class="py-20 relative overflow-hidden">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold mb-16 orbitron text-center">Publications & <span class="text-primary">Achievements</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+<div class="bg-gray-900 p-8 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary text-black px-4 py-1 text-sm font-bold">
+FEATURED
+</div>
+<h3 class="text-xl font-bold mb-4 orbitron">Research Publication</h3>
+<h4 class="text-primary mb-6">"Enhancing Network Security Through Machine Learning-Based Anomaly Detection"</h4>
+<p class="text-gray-300 mb-6">Co-authored a research paper exploring the application of machine learning algorithms in identifying network security anomalies and potential intrusions. The paper proposes a novel approach combining supervised and unsupervised learning techniques to improve detection accuracy.</p>
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-400">Published in International Journal of Cybersecurity Research, 2024</span>
+<button class="bg-primary bg-opacity-10 text-primary border border-primary px-4 py-2 rounded-button hover:bg-opacity-20 transition-all duration-300 whitespace-nowrap">Read Paper</button>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4">
+<i class="ri-trophy-line ri-2x text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold">National Cybersecurity Challenge</h4>
+<p class="text-sm text-primary">2nd Place Finalist</p>
+</div>
+</div>
+<p class="text-gray-300">Competed against 200+ teams in a nationwide cybersecurity competition, demonstrating skills in network defense, cryptography challenges, and digital forensics.</p>
+</div>
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4">
+<i class="ri-presentation-line ri-2x text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold">Security Conference Speaker</h4>
+<p class="text-sm text-primary">University Security Summit</p>
+</div>
+</div>
+<p class="text-gray-300">Delivered a presentation on "The Future of IoT Security" at the annual University Security Summit, discussing vulnerabilities and protection strategies for connected devices.</p>
+</div>
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4">
+<i class="ri-code-box-line ri-2x text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold">Open Source Contributor</h4>
+<p class="text-sm text-primary">Security Tools Development</p>
+</div>
+</div>
+<p class="text-gray-300">Active contributor to open-source security tools, including developing plugins for vulnerability scanners and creating educational resources for the cybersecurity community.</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-900 p-8 rounded-lg border border-gray-800">
+<h3 class="text-2xl font-bold mb-8 orbitron text-center">CTF <span class="text-primary">Competitions</span></h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-primary transition-all duration-300">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-bold">HackTheBox CTF</h4>
+<span class="bg-primary text-black px-3 py-1 text-xs rounded-full">Top 5%</span>
+</div>
+<p class="text-sm text-gray-300 mb-4">Consistently ranked in the top 5% of participants, with expertise in web exploitation, reverse engineering, and cryptography challenges.</p>
+<div class="flex justify-between text-sm text-gray-400">
+<span>Machines Pwned: 35</span>
+<span>Challenges: 47</span>
+</div>
+</div>
+<div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-primary transition-all duration-300">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-bold">TryHackMe</h4>
+<span class="bg-primary text-black px-3 py-1 text-xs rounded-full">Top 1%</span>
+</div>
+<p class="text-sm text-gray-300 mb-4">Completed over 75 rooms, specializing in network security, OSINT, and privilege escalation techniques on various operating systems.</p>
+<div class="flex justify-between text-sm text-gray-400">
+<span>Rank: Omniscient</span>
+<span>Points: 15,000+</span>
+</div>
+</div>
+<div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-primary transition-all duration-300">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-bold">PicoCTF</h4>
+<span class="bg-primary text-black px-3 py-1 text-xs rounded-full">Global Top 50</span>
+</div>
+<p class="text-sm text-gray-300 mb-4">Achieved global top 50 ranking in the annual competition, demonstrating proficiency in binary exploitation, forensics, and cryptography.</p>
+<div class="flex justify-between text-sm text-gray-400">
+<span>Score: 12,450</span>
+<span>Challenges: 42/50</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="certifications" class="py-20 relative overflow-hidden bg-gray-950">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold mb-16 orbitron text-center">Professional <span class="text-primary">Certifications</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="badge rounded-lg">
+<div class="badge-content">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-4">
+<i class="ri-shield-check-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-2 orbitron">CompTIA Security+</h3>
+<p class="text-primary mb-4">SY0-601</p>
+<p class="text-sm text-gray-300 mb-4">Comprehensive certification validating baseline skills in core security functions and best practices.</p>
+<p class="text-xs text-gray-400">Issued: January 2024</p>
+<p class="text-xs text-gray-400">Expires: January 2027</p>
+</div>
+</div>
+</div>
+<div class="badge rounded-lg">
+<div class="badge-content">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-4">
+<i class="ri-terminal-box-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-2 orbitron">Certified Ethical Hacker</h3>
+<p class="text-primary mb-4">EC-Council</p>
+<p class="text-sm text-gray-300 mb-4">Specialized certification in ethical hacking methodologies, tools, and techniques for identifying vulnerabilities.</p>
+<p class="text-xs text-gray-400">Issued: March 2024</p>
+<p class="text-xs text-gray-400">Expires: March 2027</p>
+</div>
+</div>
+</div>
+<div class="badge rounded-lg">
+<div class="badge-content">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-4">
+<i class="ri-cloud-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-2 orbitron">AWS Security Specialty</h3>
+<p class="text-primary mb-4">Amazon Web Services</p>
+<p class="text-sm text-gray-300 mb-4">Advanced certification in implementing security controls and practices in the AWS cloud environment.</p>
+<p class="text-xs text-gray-400">Issued: May 2024</p>
+<p class="text-xs text-gray-400">Expires: May 2027</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<h3 class="text-xl font-bold mb-6 orbitron">In-Progress <span class="text-primary">Certifications</span></h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-bold">OSCP (Offensive Security Certified Professional)</span>
+<span>65% Complete</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 65%"></div>
+</div>
+<p class="text-sm text-gray-400 mt-2">Expected completion: December 2025</p>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-bold">CISSP (Certified Information Systems Security Professional)</span>
+<span>40% Complete</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 40%"></div>
+</div>
+<p class="text-sm text-gray-400 mt-2">Expected completion: June 2026</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+<h3 class="text-xl font-bold mb-6 orbitron">Additional <span class="text-primary">Credentials</span></h3>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="w-10 h-10 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4 mt-1">
+<i class="ri-award-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold">Python for Cybersecurity</h4>
+<p class="text-sm text-primary mb-1">Coursera</p>
+<p class="text-sm text-gray-300">Advanced course on leveraging Python for security automation and tool development.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4 mt-1">
+<i class="ri-award-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold">Network Defense Essentials</h4>
+<p class="text-sm text-primary mb-1">EC-Council</p>
+<p class="text-sm text-gray-300">Foundational certification in network security defense strategies and implementations.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4 mt-1">
+<i class="ri-award-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold">Secure Coding Practices</h4>
+<p class="text-sm text-primary mb-1">SANS Institute</p>
+<p class="text-sm text-gray-300">Specialized training in writing secure code and identifying common vulnerabilities.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="contact" class="py-20 relative overflow-hidden">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold mb-16 orbitron text-center">Get in <span class="text-primary">Touch</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="bg-gray-900 p-8 rounded-lg border border-gray-800">
+<h3 class="text-2xl font-bold mb-6 orbitron">Contact <span class="text-primary">Form</span></h3>
+<form>
+<div class="mb-6">
+<label for="name" class="block mb-2 text-sm font-medium">Your Name</label>
+<input type="text" id="name" class="form-input w-full px-4 py-3 rounded-lg" placeholder="John Doe" required>
+</div>
+<div class="mb-6">
+<label for="email" class="block mb-2 text-sm font-medium">Your Email</label>
+<input type="email" id="email" class="form-input w-full px-4 py-3 rounded-lg" placeholder="john@example.com" required>
+</div>
+<div class="mb-6">
+<label for="subject" class="block mb-2 text-sm font-medium">Subject</label>
+<input type="text" id="subject" class="form-input w-full px-4 py-3 rounded-lg" placeholder="How can I help you?" required>
+</div>
+<div class="mb-6">
+<label for="message" class="block mb-2 text-sm font-medium">Message</label>
+<textarea id="message" rows="5" class="form-input w-full px-4 py-3 rounded-lg" placeholder="Your message here..." required></textarea>
+</div>
+<div class="mb-6 flex items-center">
+<input type="checkbox" id="consent" required>
+<label for="consent" class="ml-2 text-sm text-gray-300">I consent to having this website store my submitted information</label>
+</div>
+<button type="submit" class="w-full bg-primary text-black font-bold py-3 px-6 rounded-button hover:bg-opacity-90 transition-all duration-300 whitespace-nowrap">Send Message</button>
+</form>
+</div>
+<div>
+<div class="bg-gray-900 p-8 rounded-lg border border-gray-800 mb-8">
+<h3 class="text-2xl font-bold mb-6 orbitron">Contact <span class="text-primary">Information</span></h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4">
+<i class="ri-mail-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold mb-1">Email</h4>
+<p class="text-primary">jesvin.saji@example.com</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4">
+<i class="ri-map-pin-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold mb-1">Location</h4>
+<p class="text-gray-300">San Francisco, California</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 rounded-lg bg-primary bg-opacity-10 flex items-center justify-center mr-4">
+<i class="ri-time-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold mb-1">Availability</h4>
+<p class="text-gray-300">Monday - Friday, 9:00 AM - 6:00 PM PST</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-900 p-8 rounded-lg border border-gray-800">
+<h3 class="text-2xl font-bold mb-6 orbitron">Connect <span class="text-primary">Online</span></h3>
+<div class="grid grid-cols-2 gap-4">
+<a href="#" class="flex items-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300">
+<div class="w-10 h-10 flex items-center justify-center mr-3">
+<i class="ri-linkedin-fill ri-lg text-primary"></i>
+</div>
+<span>LinkedIn</span>
+</a>
+<a href="#" class="flex items-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300">
+<div class="w-10 h-10 flex items-center justify-center mr-3">
+<i class="ri-github-fill ri-lg text-primary"></i>
+</div>
+<span>GitHub</span>
+</a>
+</div>
+<div class="mt-6">
+<label class="block mb-2 text-sm font-medium">Preferred Contact Method</label>
+<div class="flex space-x-4">
+<label class="custom-switch">
+<input type="checkbox" checked>
+<span class="switch-slider"></span>
+</label>
+<span>Email notifications enabled</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-10 bg-gray-950 border-t border-gray-800">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between items-center mb-8">
+<div class="text-2xl font-bold mb-4 md:mb-0 orbitron">
+<span class="text-white">Jesvin</span>
+<span class="text-primary">Saji</span>
+</div>
+<div class="flex space-x-6">
+<a href="#" class="social-icon">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-linkedin-fill ri-lg"></i>
+</div>
+</a>
+<a href="#" class="social-icon">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-github-fill ri-lg"></i>
+</div>
+</a>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Jesvin Saji. All rights reserved.</p>
+<div class="flex space-x-6 text-sm text-gray-400">
+<a href="#" class="hover:text-primary transition-colors duration-300">Privacy Policy</a>
+<a href="#" class="hover:text-primary transition-colors duration-300">Terms of Service</a>
+<a href="#" class="hover:text-primary transition-colors duration-300">Cookie Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<a href="#" id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary bg-opacity-10 border border-primary rounded-full flex items-center justify-center text-primary hover:bg-opacity-20 transition-all duration-300 opacity-0 invisible">
+<i class="ri-arrow-up-line ri-lg"></i>
+</a>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Loading screen
+setTimeout(function() {
+const loadingScreen = document.getElementById('loading-screen');
+loadingScreen.style.opacity = '0';
+setTimeout(function() {
+loadingScreen.style.display = 'none';
+}, 500);
+}, 3000);
+// Custom cursor
+const cursor = document.createElement('div');
+cursor.classList.add('custom-cursor');
+document.body.appendChild(cursor);
+let cursorX = 0;
+let cursorY = 0;
+let trailDots = [];
+// Create trail dots
+for (let i = 0; i < 5; i++) {
+const trail = document.createElement('div');
+trail.classList.add('cursor-trail');
+document.body.appendChild(trail);
+trailDots.push({
+element: trail,
+x: 0,
+y: 0
+});
+}
+document.addEventListener('mousemove', function(e) {
+cursorX = e.clientX;
+cursorY = e.clientY;
+cursor.style.left = cursorX + 'px';
+cursor.style.top = cursorY + 'px';
+// Update trail positions with delay
+setTimeout(() => {
+trailDots.forEach((dot, index) => {
+const delay = (trailDots.length - index) * 50;
+setTimeout(() => {
+dot.x = cursorX;
+dot.y = cursorY;
+dot.element.style.left = dot.x + 'px';
+dot.element.style.top = dot.y + 'px';
+}, delay);
+});
+}, 10);
+});
+// Change cursor on interactive elements
+const interactiveElements = document.querySelectorAll('a, button, input, textarea, .flip-card, .badge, .hexagon');
+interactiveElements.forEach(element => {
+element.addEventListener('mouseenter', () => {
+cursor.style.width = '40px';
+cursor.style.height = '40px';
+cursor.style.backgroundColor = 'rgba(0, 240, 255, 0.1)';
+});
+element.addEventListener('mouseleave', () => {
+cursor.style.width = '20px';
+cursor.style.height = '20px';
+cursor.style.backgroundColor = 'transparent';
+});
+});
+// Back to top button
+const backToTopButton = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 500) {
+backToTopButton.classList.remove('opacity-0', 'invisible');
+backToTopButton.classList.add('opacity-100', 'visible');
+} else {
+backToTopButton.classList.add('opacity-0', 'invisible');
+backToTopButton.classList.remove('opacity-100', 'visible');
+}
+});
+backToTopButton.addEventListener('click', (e) => {
+e.preventDefault();
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+// Animate progress bars on scroll
+const progressBars = document.querySelectorAll('.progress-fill');
+const animateProgressBars = () => {
+progressBars.forEach(bar => {
+const rect = bar.getBoundingClientRect();
+const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+if (isVisible) {
+const width = bar.parentElement.getAttribute('data-width') || bar.style.width;
+bar.style.width = width;
+}
+});
+};
+window.addEventListener('scroll', animateProgressBars);
+animateProgressBars();
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Initialize the 3D background
+const canvasContainer = document.getElementById('canvas-container');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x000000, 0);
+canvasContainer.appendChild(renderer.domElement);
+// Create particles
+const particlesGeometry = new THREE.BufferGeometry();
+const particlesCount = 1000;
+const posArray = new Float32Array(particlesCount * 3);
+for (let i = 0; i < particlesCount * 3; i++) {
+posArray[i] = (Math.random() - 0.5) * 10;
+}
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+const particlesMaterial = new THREE.PointsMaterial({
+size: 0.02,
+color: 0x00F0FF,
+transparent: true,
+opacity: 0.5
+});
+const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(particlesMesh);
+// Create grid
+const gridHelper = new THREE.GridHelper(20, 20, 0x00F0FF, 0x00F0FF);
+gridHelper.material.opacity = 0.1;
+gridHelper.material.transparent = true;
+scene.add(gridHelper);
+camera.position.z = 5;
+// Animation
+function animate() {
+requestAnimationFrame(animate);
+particlesMesh.rotation.x += 0.0005;
+particlesMesh.rotation.y += 0.0005;
+gridHelper.rotation.x += 0.0002;
+gridHelper.rotation.y += 0.0002;
+renderer.render(scene, camera);
+}
+animate();
+// Handle window resize
+window.addEventListener('resize', () => {
+camera.aspect = window.innerWidth / window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(window.innerWidth, window.innerHeight);
+});
+});
+</script>
+</body>
+</html>
